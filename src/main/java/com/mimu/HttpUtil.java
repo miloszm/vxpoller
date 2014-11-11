@@ -23,7 +23,7 @@ public class HttpUtil {
     private static List<String> sliceMultiMap(MultiMap headers){
         List<String> list = new ArrayList<>();
         for (Map.Entry<String,String> e: headers.entries()){
-            list.add("<li>" + e.getKey() + ": " + e.getValue() + "</li>\n");
+            list.add("<p>" + e.getKey() + ": " + e.getValue() + "</p>\n");
         }
         return list;
     }

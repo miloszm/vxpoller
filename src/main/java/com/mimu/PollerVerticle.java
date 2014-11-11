@@ -16,6 +16,7 @@ import java.util.concurrent.atomic.AtomicLong;
  */
 public class PollerVerticle extends Verticle {
 
+    public static final String VERSION = "0.0.1";
     AtomicLong receivedCounter = new AtomicLong();
     long pollMillis = 0L;
 
@@ -37,10 +38,16 @@ public class PollerVerticle extends Verticle {
                 String path = req.path();
                 req.response().setChunked(true);
                 req.response().setStatusCode(200);
-                req.response().write("<html><body>");
-                HttpUtil.sendHeaders(req.response(), req.headers());
                 req.response().putHeader("Content-Type", "text/html");
-                req.response().write("<h1>hi, your path is: " + path + " version=0008 maxPoll=" + maxPoll + "</h1>");
+                req.response().write("<html><body>");
+                req.response().write("<h2>headers:</h2>");
+                HttpUtil.sendHeaders(req.response(), req.headers());
+                req.response().write("<h2>path:</h2>");
+                req.response().write(path);
+                req.response().write("<h2>maxPoll:</h2>");
+                req.response().write("" + maxPoll);
+                req.response().write("<h2>version:</h2>");
+                req.response().write(VERSION);
                 req.response().write("</body></html>");
                 req.response().end();
 
