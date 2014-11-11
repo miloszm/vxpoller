@@ -29,7 +29,7 @@ public class HttpUtil {
     }
 
     /**
-     * get int param if present or zero
+     * get int param if present or a default value
      */
     public static int getIntParam(HttpServerRequest req, String paramName, int defaultValue){
 
