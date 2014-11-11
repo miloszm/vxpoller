@@ -78,7 +78,7 @@ public class PollerVerticle extends Verticle {
 
         request.setChunked(true);
 
-        request.write("bla");
+        request.write("text");
 
         request.end();
 
